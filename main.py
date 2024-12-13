@@ -1,11 +1,10 @@
-def main():
-    with open('books/frankenstein.txt', "r", encoding="utf-8") as f:
+def main(path):
+    with open(path, "r", encoding="utf-8") as f:
         file_contents = f.read()
 
         # count how many total numbers there are in the file
         remove_white_space = file_contents.split()
         total_num = len(remove_white_space)
-        print(total_num)
 
         #count show many times a letters there are in the text ex: {'p': 6121}
 
@@ -19,6 +18,15 @@ def main():
                         words_dict[char] += 1
                     else:
                         words_dict[char] = 1
+        
+        #print how many times the letter was founded
+        print(f"--- Begin report of {path} ---")
+        print(f"{total_num} words found in the document \n")
+        
+        for word in words_dict:
+            print(f"The '{word}' character was found {words_dict[word]} times")
 
-        print(words_dict)
-main()
+        print("--- End report ---")
+
+path = "books/frankenstein.txt"
+main(path)
